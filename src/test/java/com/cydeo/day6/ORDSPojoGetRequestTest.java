@@ -17,6 +17,7 @@ public class ORDSPojoGetRequestTest extends HRTestBase {
 
         JsonPath jsonPath = get("/regions").then().statusCode(200).log().body().extract().jsonPath();
 
+        //pointing first region: item and item's first element
         Region region1 = jsonPath.getObject("items[0]", Region.class);
 
         System.out.println(region1);
@@ -24,6 +25,11 @@ public class ORDSPojoGetRequestTest extends HRTestBase {
         System.out.println("region1.getRegion_id() = " + region1.getRId());
         System.out.println("region1.getRegion_name() = " + region1.getRegion_name());
         System.out.println("region1.getLinks().get(0).getHref() = " + region1.getLinks().get(0).getHref());
+
+         /* also you can do like this;
+        Link link1 =region1.getLinks().get(0);
+        link1.getHref();
+         */
 
     }
 
@@ -35,6 +41,8 @@ public class ORDSPojoGetRequestTest extends HRTestBase {
                 .extract().jsonPath().getObject("items[0]", Employee.class);
 
         System.out.println(employee1);
+        //body nin sadece bir kısmını istiyorsak, diğer kalanı yoksaymalıyız.
+        // bu yüzden pojo classta @JsonIgnoreProperties(ignoreUnknown = true) kullan.
 
     }
 
