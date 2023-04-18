@@ -12,6 +12,24 @@ import static org.hamcrest.MatcherAssert.*;
 import static org.hamcrest.Matchers.*;
 public class ORDSPojoGetRequestTest extends HRTestBase {
 
+    /*
+    create pojo classes for this response
+    then test it with sending get request to regions endpoint
+    and only pointing first region and converting your pojos
+    Start from the inner part (inner array)
+    "items": [
+        {
+            "region_id": 1,
+            "region_name": "Europe",
+            "links": [
+                {
+                    "rel": "self",
+                    "href": "http://100.24.240.163:1000/ords/hr/regions/1"
+                }
+            ]
+        }
+    ]
+     */
     @Test
     public void regionTest(){
 
