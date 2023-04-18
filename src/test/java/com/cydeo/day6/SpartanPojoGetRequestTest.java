@@ -80,6 +80,7 @@ public class SpartanPojoGetRequestTest extends SpartanTestBase {
         Search searchResult = response.as(Search.class);
 
         System.out.println(searchResult.getContent().get(0).getName());
+        //                              List         firstelement firstelement's name
     }
 
     @DisplayName("GET  /spartans/search and save as List<Spartan>")
@@ -94,9 +95,10 @@ public class SpartanPojoGetRequestTest extends SpartanTestBase {
                 .get("/api/spartans/search")
                 .then()
                 .statusCode(200)
-                .extract().jsonPath().getList("items", Spartan.class);
+                .extract().jsonPath().getList("content", Spartan.class);
 
         System.out.println(spartanList.get(1).getName());
+        //without creating search pojo class, you can use .extract().jsonPath().getList() and List<Spartan> spartanList
 
     }
 

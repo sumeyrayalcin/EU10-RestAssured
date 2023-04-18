@@ -19,3 +19,15 @@ public class Region {
     private List<Link> links;
 
 }
+/*
+{
+            "region_id": 1,               //int
+            "region_name": "Europe",      //String
+            "links": [                    // List of links
+                {
+                    "rel": "self",
+                    "href": "http://54.161.232.48:1000/ords/hr/regions/1"
+                }
+            ]
+        }
+ */
