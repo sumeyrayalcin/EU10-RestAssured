@@ -106,7 +106,7 @@ public class SpartanPostRequestDemo extends SpartanTestBase {
 
         Response response = given().accept(ContentType.JSON).and() //what we are asking from api which is JSON response
                 .contentType(ContentType.JSON) //what we are sending to api, which is JSON also
-                .body(spartan).log().all()
+                .body(spartan).log().all()     //objeyi buraya ekledik => spartan
                 .when()
                 .post("/api/spartans");
 
