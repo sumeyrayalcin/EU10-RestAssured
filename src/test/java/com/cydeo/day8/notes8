@@ -1,0 +1,74 @@
+AUTHENTICATION and AUTHORIZATION
+
+AUTHENTICATION --> verifies if you are who you say you are.
+                   (identity, basic verification. id, picture etc)
+
+AUTHORIZATION --> verifies if you have access/permission to certian actions(API)
+                  (do you have right to do this based on your rights after AUTHENTICATION)
+
+These two terms is important for testing purposes. Because of "role base access control" for negative and positive scenarios (who can do what)
+
+[http://100.24.240.163:7000/  -> api doc -> admin admin]
+Spartan we have 3 different user types;
+user user
+editor editor
+admin admin
+
+guest
+
+status codes;
+401 --> invalid credentials, api doesnt know who you are ? (Unauthorized)
+403 --> valid credentials, but not enough access level/permission to do action (Forbidden)
+
+spartan running at port 7000 uses basic auth we can send our username and password by clickin autoraiztion tab on the postman and select basic auth
+
+for spartan application we have 3 different users, and only admin can delete spartan based on the documentation. if you dont provide and username and password you will get 401 because api doesnt know who you are. but lets say you use user user as a credentials and try to delete you will get 403 because api knows you but you dont have right to delete your friends.
+
+****In HEADER part of request is keeping your AUTHORIZATION information.
+
+__BOOKIT__
+
+https://cybertek-reservation-api-qa.herokuapp.com/sign?email=sbirdbj@fc2.com&password=asenorval
+
+email: emaynell8f@google.es
+password: besslebond
+link: http://cybertek-reservation-api-qa3.herokuapp.com/sign
+
+token
+eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiIxMzkiLCJhdWQiOiJzdHVkZW50LXRlYW0tbGVhZGVyIn0._vM1-eRoS7SsHu6T-QPdJoEdA8LSwnxUvvTTbhV-8ms
+mine: eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI4NiIsImF1ZCI6InN0dWRlbnQtdGVhbS1sZWFkZXIifQ.lEfjcu6RpBfcZ4qWthzZU8uH8fX4FCJFfxBnPNgh4Mo
+
+for bookit api, it requires us to pass accessToken with each request that we send.
+in postman we can add as bearer token and use it
+
+postman is creating the request headerheader and adding the token as following;
+
+Authorization: Bearer your-token
+
+you can see your token by clicking hidden headers.
+
+Postman
+-You can add the access in auth while you creating collection in postman,
+then when you create a new request just inherit from collection.
+Select 'Inherit auth from parent' from auth part of header.
+
+
+RBAC -- Role based access control
+
+HOW TO SEND Basic Auth(Spartan) or Bearer(Bookit) token with Restassured Library ?
+
+
+
+
+CRUD operations
+Create            Post
+Read            Get
+Update          Put/Patch
+Delete          Delete
+
+
+
+
+***You can use the request body for RestAssured auth;
+
+given().auth().basic("admin","admin")
